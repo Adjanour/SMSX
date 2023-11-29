@@ -61,7 +61,7 @@ class SendSms implements ShouldQueue
         } //Sending Failed
         else {
             // Redirect with error message
-            Log::info('error', 'Message not sent!');
+            Log::info('error Message not sent!');
         }
 
     }

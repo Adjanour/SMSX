@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendSms;
 use App\Models\Contact;
 use App\Models\MessageTemplates;
 
@@ -70,6 +71,7 @@ class SmsController extends Controller
 
         $url = "$endPoint?$queryString";
 
+        SendSms::dispatch($url);
             // Initialize cURL session
             $curl = curl_init($url);
 
