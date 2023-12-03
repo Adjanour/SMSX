@@ -34,7 +34,7 @@ class SmsController extends Controller
                 $firstName = $selectedObject->first_name;
                 $lastName = $selectedObject->last_name;
                 $Name = "$firstName $lastName";
-        } catch (Exception) {
+        } catch (\Exception $e) {
 
             }
             $formattedMessage = str_replace("{NAME}", $Name, $message);
@@ -71,7 +71,7 @@ class SmsController extends Controller
 
         $url = "$endPoint?$queryString";
 
-        SendSms::dispatch($url);
+//        SendSms::dispatch($url);
             // Initialize cURL session
             $curl = curl_init($url);
 
@@ -87,7 +87,7 @@ class SmsController extends Controller
                 $errorCode = curl_errno($curl);
                 $errorMessage = curl_error($curl);
 //                return response()->json(['status' => $errorCode, 'message' => 'cURL Error: ' . curl_error($curl)]);
-                return  redirect()->route('sms')->with('error', 'Message not sent!');
+                return  redirect()->route('sms')->with('error',$errorCode.':'.$errorMessage);
             }
 
             // Check response status code

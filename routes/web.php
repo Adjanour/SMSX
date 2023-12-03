@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BirthdayController;
+use App\Http\Controllers\BulkSmsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MessageTemplateController;
 use App\Http\Controllers\ProfileController;
@@ -26,7 +27,8 @@ Route::get('/', function () {
 //22-02-05
 Route::post('/sms/send', [SmsController::class, 'sendSms'])->name('send-sms');
 Route::get('/sms',[SmsController::class,'index'])->middleware(['auth','verified'])->name('sms');
-
+Route::post('/sms/bulk/send',[BulkSmsController::class,'bulkSms'])->middleware(['auth','verified'])->name('send-bulk-sms');
+Route::get('/bulk-sms',[SmsController::class,'index'])->middleware(['auth','verified'])->name('bulk-sms');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

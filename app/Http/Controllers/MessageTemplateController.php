@@ -38,7 +38,7 @@ class MessageTemplateController extends Controller
         //
         $request->validate([
             'templateName' => 'required',
-            'content'=>'required|max:120'
+            'content'=>'required'
         ]);
         $messageTemplate = new MessageTemplates(
             [

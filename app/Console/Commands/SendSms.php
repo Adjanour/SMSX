@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class SendSms extends Command
 {
@@ -27,7 +28,6 @@ class SendSms extends Command
     public function handle()
     {
         //
-
         $this->info('SMS sent successfully');
     }
 }
