@@ -13,5 +13,5 @@ const scheduledTimeInput = document.getElementById('scheduledTime');
             second: 'numeric',
         });
         timeLabel.textContent = 'Message will be sent at: ' + formattedDateTime;
-        console.log('Selected Date and Time:', selectedDateTime);
+        
     });
