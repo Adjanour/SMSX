@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('sms:sms-send')->dailyAt('8:00');
         $schedule->command('sms:birthday-sms-send');
-
+        $schedule->command('app:daily-inspiration');
     }
 
     /**

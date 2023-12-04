@@ -27,7 +27,7 @@ class BulkSmsController extends Controller
                 $firstName = $selectedObject->first_name;
                 $lastName = $selectedObject->last_name;
                 $Name = "$firstName $lastName";
-            } catch (Exception) {
+            } catch (\Exception $e) {
 
             }
             $formattedMessage = $this->formatMessage($message,$Name,$firstName,$lastName,$app_name);

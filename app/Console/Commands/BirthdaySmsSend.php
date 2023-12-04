@@ -27,8 +27,10 @@ class BirthdaySmsSend extends Command
     public function handle()
     {
         // Get birthdays on the current date
-        $currentDate = now()->format('Y-m-d');
-        $birthdays = Birthday::where('birth_date', $currentDate)->get();
+        // $currentDate = now()->format('Y-m-d');
+        // $birthdays = Birthday::where('birth_date', $currentDate)->get();
+        $currentMonthDay = now()->format('m-d');
+        $birthdays = Birthday::whereRaw("DATE_FORMAT(birth_date, '%m-%d') = ?", [$currentMonthDay])->get();
 
         // Loop through each birthday and send messages
         foreach ($birthdays as $birthday) {
