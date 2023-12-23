@@ -36,6 +36,7 @@ Route::get('/dashboard', function () {
 
 //Contact Routes
 Route::resource('/contact',ContactController::class)->middleware(['auth']);
+Route::resource('/upload',\App\Http\Controllers\ContactUploadController::class)->middleware(['auth','verified']);
 Route::resource('/contact/group',\App\Http\Controllers\ContactGroupController::class)->middleware(['auth']);
 
 //Message Routes

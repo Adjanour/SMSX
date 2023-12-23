@@ -30,6 +30,7 @@ class SmsController extends Controller
             $app_name = env('APP_NAME');
             try {
                 $selectedObject = json_decode($name);
+                //  ToDo: include other name
                 $otherName = $selectedObject->first_name;
                 $firstName = $selectedObject->first_name;
                 $lastName = $selectedObject->last_name;

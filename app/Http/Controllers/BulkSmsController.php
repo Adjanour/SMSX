@@ -31,10 +31,15 @@ class BulkSmsController extends Controller
 
             }
             $formattedMessage = $this->formatMessage($message,$Name,$firstName,$lastName,$app_name);
-
+            $formattedPhoneNumber = $selectedObject->contact;
+            if((str_starts_with($selectedObject->contact, '0')))
+            {
+                $newNumber = preg_replace('/0/', '', $selectedObject->contact, 1);
+                $formattedPhoneNumber = "+233$newNumber";
+            }
             $queryParameters = array(
                     "key" => $apiKey,
-                    "to" => $selectedObject->contact,
+                    "to" => $formattedPhoneNumber,
                     "msg" => $formattedMessage,
                     "sender_id" => $sender
                 );
@@ -47,10 +52,10 @@ class BulkSmsController extends Controller
         }
 
         if (array_key_exists('error',$response)){
-            return  redirect()->route('sms')->with('error', 'Message not sent!');
+            return  redirect()->route('sms')->with('error', 'Messages not sent!');
         }
         elseif (array_key_exists('message',$response)){
-            return redirect()->route('sms')->with('message', 'Message sent successfully!');
+            return redirect()->route('sms')->with('message', 'Messages sent successfully!');
         }
         elseif (array_key_exists('errorCode',$response)){
             list($errorCode,$errorMessage)=$response;

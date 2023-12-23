@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('birthdays', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->foreignId('contact_id')->constrained();
             $table->date('birth_date');
             $table->text('message_template');

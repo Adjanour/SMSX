@@ -111,6 +111,12 @@ class ContactController extends Controller
         $contacts = Contact::where('user_id',Auth::id())->get();
         return to_route('contact.index')->with('sucess','Note updated successfully');
     }
+    public function upload(){
+
+    }
+    public function uploadIndex(){
+        return view('contact.upload');
+    }
 
     /**
      * Remove the specified resource from storage.
